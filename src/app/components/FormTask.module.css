@@ -1,0 +1,7 @@
+.input {
+  @apply bg-gray-800 border-2 w-full p-4 rounded-lg outline-none;
+}
+
+.errorInput {
+  @apply border-red-800 placeholder:text-red-500;
+}

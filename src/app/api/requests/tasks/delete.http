@@ -1,0 +1,24 @@
+@hostname = localhost
+@port = 3000
+@host = http://{{hostname}}:{{port}}/api
+### Get all tasks
+# @name getRequests
+GET {{host}}/tasks
+Content-Type: application/json
+
+### 
+@taskId = {{getRequests.response.body.$[0]._id}}
+@unknownTaskId = 64d21c5fed2382ee85736a9d
+@taskBadId = 64d21c5fed2382ee85736a9
+
+### Delete task
+DELETE {{host}}/tasks/{{taskId}}
+Content-Type: application/json
+
+### Delete task unknownId
+DELETE {{host}}/tasks/{{unknownTaskId}}
+Content-Type: application/json
+
+### Delete task bad id
+DELETE {{host}}/tasks/{{taskBadId}}
+Content-Type: application/json

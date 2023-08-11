@@ -1,0 +1,42 @@
+@hostname = localhost
+@port = 3000
+@host = http://{{hostname}}:{{port}}/api
+### Create task
+POST {{host}}/tasks
+Content-Type: application/json
+
+{
+  "title": "Crear una web",
+  "description": "Usando nextjs"
+}
+
+### Create task empty title
+POST {{host}}/tasks
+Content-Type: application/json
+
+{
+  "title": "",
+  "description": "Usando nextjs"
+}
+
+### Create task no title
+POST {{host}}/tasks
+Content-Type: application/json
+
+{
+  "description": "New descripción tarea"
+}
+
+### Create task no description
+POST {{host}}/tasks
+Content-Type: application/json
+
+{
+  "title": "New tarea"
+}
+
+### Create empty task
+POST {{host}}/tasks
+Content-Type: application/json
+
+{}

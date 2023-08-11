@@ -1,0 +1,64 @@
+@hostname = localhost
+@port = 3000
+@host = http://{{hostname}}:{{port}}/api
+### Get all tasks
+# @name getRequests
+GET {{host}}/tasks
+Content-Type: application/json
+
+### 
+@taskId = {{getRequests.response.body.$[0]._id}}
+@unknownTaskId = 64d21c5fed2382ee85736a9d
+@taskBadId = 64d21c5fed2382ee85736a9
+
+### Update task description
+PUT {{host}}/tasks/{{taskId}}
+Content-Type: application/json
+
+{
+  "description": "Descripción adios"
+}
+
+### Update task title
+PUT {{host}}/tasks/{{taskId}}
+Content-Type: application/json
+
+{
+  "title": "Titulo nuevo"
+}
+
+### Update full task
+PUT {{host}}/tasks/{{taskId}}
+Content-Type: application/json
+
+{
+  "title": "Titulo full nuevo",
+  "description": "Descripción full nuevo"
+}
+
+### Update badId task
+PUT {{host}}/tasks/{{taskBadId}}
+Content-Type: application/json
+
+{
+  "title": "Titulo full nuevo",
+  "description": "Descripción full nuevo"
+}
+
+### Update full task
+PUT {{host}}/tasks/{{unknownTaskId}}
+Content-Type: application/json
+
+{
+  "title": "Titulo full nuevo",
+  "description": "Descripción full nuevo"
+}
+
+### Empty title
+PUT {{host}}/tasks/{{taskId}}
+Content-Type: application/json
+
+{
+  "title": "",
+  "description": "Descripción full nuevo"
+}
